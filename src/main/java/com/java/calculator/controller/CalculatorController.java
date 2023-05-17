@@ -21,19 +21,17 @@ public class CalculatorController {
 	
 	private TracerImpl tracer = new TracerImpl();
 	
-	@GetMapping(path = "sum/{number1}/{number2}", produces = "application/json")
+	@GetMapping(path = "/sum/{number1}/{number2}", produces = "application/json")
 	public ResponseEntity<Double> getSum(@PathVariable Double number1, @PathVariable Double number2) {
 		Double result = operateService.getSum(number1, number2);
-		tracer.trace(result);
+		tracer.trace(result);			
 		return new ResponseEntity<>(result, HttpStatus.OK);
-		
 	}
 	
-	@GetMapping(path = "subtract/{number1}/{number2}", produces = "application/json")
+	@GetMapping(path = "/subtract/{number1}/{number2}", produces = "application/json")
 	public ResponseEntity<Double> getSubtract(@PathVariable Double number1, @PathVariable Double number2) {
-		Double result = operateService.getSubtract(number1, number2);
+		Double result  = operateService.getSubtract(number1, number2);
 		tracer.trace(result);
 		return new ResponseEntity<>(result, HttpStatus.OK);
-		
 	}
 }
