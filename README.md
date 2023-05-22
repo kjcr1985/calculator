@@ -13,7 +13,7 @@ either from git or any repository manager.
 
 -Proceed to install the tracer the .jar file, which is added in the repository itself (lib folder):
 
-mvn install:install-file -Dfile=./lib/tracer-1.0.0.jar -DgroupId=io.corp -DartifactId=calculator -Dversion=1.0.0 -Dpackaging=jar
+mvn install:install-file -Dfile=./lib/tracer-1.0.0.jar -DgroupId=io.corp.calculator -DartifactId=tracer -Dversion=1.0.0 -Dpackaging=jar
 
 Compile the .jar of the calculator api with the command: "mvn clean install" from the command line.
 this is launched from the root folder of the project
