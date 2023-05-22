@@ -1,18 +1,16 @@
 package com.java.calculator.controller;
 
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
-import static org.junit.Assert.assertNull;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,7 +24,6 @@ import com.java.calculator.service.OperateServiceImpl;
 
 @WebMvcTest
 @AutoConfigureMockMvc
-@RunWith(MockitoJUnitRunner.class)
 public class CalculatorControllerTest {
 	
 	@Autowired
@@ -77,7 +74,9 @@ public class CalculatorControllerTest {
 	public void testCalculatorSumKO_1() throws Exception{
 		Mockito.when(operateService.getSum(Double.valueOf(2), Double.valueOf(2))).thenReturn(null);
 		
-		assertThatNullPointerException();
+		ResponseEntity<Double> sumResult = calculatorController.getSum(Double.valueOf(2), Double.valueOf(2));
+		
+		assertNull(sumResult);
 		
 	}
 	
@@ -85,7 +84,9 @@ public class CalculatorControllerTest {
 	public void testCalculatorSubstractKO_1() throws Exception{
 		Mockito.when(operateService.getSubtract(Double.valueOf(4), Double.valueOf(2))).thenReturn(null);
 		
-		assertThatNullPointerException();
+		ResponseEntity<Double> subtractResult = calculatorController.getSubtract(Double.valueOf(4), Double.valueOf(2));
+		
+		assertNull(subtractResult);
 	}
 	
 	@Test
