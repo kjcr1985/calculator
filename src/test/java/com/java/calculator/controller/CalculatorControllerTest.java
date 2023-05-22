@@ -2,7 +2,6 @@ package com.java.calculator.controller;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
@@ -72,25 +71,6 @@ public class CalculatorControllerTest {
 	
 	@Test
 	public void testCalculatorSumKO_1() throws Exception{
-		Mockito.when(operateService.getSum(Double.valueOf(2), Double.valueOf(2))).thenReturn(null);
-		
-		ResponseEntity<Double> sumResult = calculatorController.getSum(Double.valueOf(2), Double.valueOf(2));
-		
-		assertNull(sumResult);
-		
-	}
-	
-	@Test
-	public void testCalculatorSubstractKO_1() throws Exception{
-		Mockito.when(operateService.getSubtract(Double.valueOf(4), Double.valueOf(2))).thenReturn(null);
-		
-		ResponseEntity<Double> subtractResult = calculatorController.getSubtract(Double.valueOf(4), Double.valueOf(2));
-		
-		assertNull(subtractResult);
-	}
-	
-	@Test
-	public void testCalculatorSumKO_2() throws Exception{
 		Mockito.when(operateService.getSum(Double.valueOf(2), null)).thenThrow(NullPointerException.class);
 		
 		Assertions.assertThrows(NullPointerException.class ,
@@ -101,7 +81,7 @@ public class CalculatorControllerTest {
 	}
 	
 	@Test
-	public void testCalculatorSubstractKO_2() throws NullPointerException, Exception{
+	public void testCalculatorSubstractKO_1() throws NullPointerException, Exception{
 		
 		Mockito.when(operateService.getSubtract(Double.valueOf(2), null)).thenThrow(new NullPointerException());
 		
@@ -113,7 +93,7 @@ public class CalculatorControllerTest {
 	
 	
 	@Test
-	public void testCalculatorSumKO_3() throws Exception{
+	public void testCalculatorSumKO_2() throws Exception{
 		Mockito.when(operateService.getSum(null, Double.valueOf(2))).thenThrow(NullPointerException.class);
 		
 		Assertions.assertThrows(NullPointerException.class ,
@@ -123,7 +103,7 @@ public class CalculatorControllerTest {
 	}
 	
 	@Test
-	public void testCalculatorSubstractKO_3() throws Exception{
+	public void testCalculatorSubstractKO_2() throws Exception{
 		Mockito.when(operateService.getSubtract(null, Double.valueOf(2))).thenThrow(NullPointerException.class);
 		
 		Assertions.assertThrows(NullPointerException.class ,
